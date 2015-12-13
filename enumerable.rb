@@ -2,9 +2,7 @@ require "pry"
 
 module MyEnumerable
   def to_a
-    array = []
-    each {|element| array << element}
-    array
+    each_with_object([]) {|el, array| array << el}
   end
 
   def count(&block)
