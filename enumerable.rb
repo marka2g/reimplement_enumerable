@@ -46,8 +46,7 @@ module MyEnumerable
 
   def take(number)
     each_with_object([]) do |el, taken|
-      number -= 1
-      break taken if number < 0
+      break taken if (number -= 1) < 0
       taken << el
     end
   end
