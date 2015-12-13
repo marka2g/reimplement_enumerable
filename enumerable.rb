@@ -26,9 +26,10 @@ module MyEnumerable
   end
 
   def map(&block)
-    mapped = []
-    each { |el| mapped << block.call(el) }
-    mapped
+    # mapped = []
+    # each { |el| mapped << block.call(el) }
+    # mapped
+    each_with_object([]) {|el, mapped| mapped << block.call(el)}
   end
 
   def inject(aggregate, symbol = nil, &block)
