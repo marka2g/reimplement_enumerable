@@ -20,16 +20,10 @@ module MyEnumerable
   end
 
   def find_all(&block)
-    # found = []
-    # each { |el| found << el if block.call el }
-    # found
     each_with_object([]) {|el, found| found << el if block.call(el)}
   end
 
   def map(&block)
-    # mapped = []
-    # each { |el| mapped << block.call(el) }
-    # mapped
     each_with_object([]) {|el, mapped| mapped << block.call(el)}
   end
 
@@ -40,13 +34,6 @@ module MyEnumerable
   end
 
   def group_by(&block)
-    # grouped = {}
-    # each do |el|
-    #   key = block.call(el)
-    #   grouped[key] = [] unless grouped.key? key
-    #   grouped[key] << el
-    # end
-    # grouped
     each_with_object Hash.new do |el, grouped|
       key = block.call el
       grouped[key] = [] unless grouped.key? key
