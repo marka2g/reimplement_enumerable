@@ -54,7 +54,8 @@ module MyEnumerable
   def drop(number)
     each_with_object([]) do |el, dropped|
       # skip the rest of this block unless
-      next unless (number -= 1) < 0
+      # next unless (number -= 1) < 0
+      next if 0 <= (number -= 1)
       dropped << el
     end
   end
