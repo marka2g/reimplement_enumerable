@@ -50,6 +50,14 @@ module MyEnumerable
       taken << el
     end
   end
+
+  def drop(number)
+    each_with_object([]) do |el, dropped|
+      # skip the rest of this block unless
+      next unless (number -= 1) < 0
+      dropped << el
+    end
+  end
 end
 
 RSpec.describe "My Enumerable" do
@@ -204,9 +212,14 @@ RSpec.describe "My Enumerable" do
     assert_enum(['a', 'b', 'c'],  :take, 2, ['a', 'b'])
   end
 
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-drop
-  # specify "#drop returns whatever items wouldn\'t get taken by take" do
-  # end
+  # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-drop
+  specify "#drop returns whatever items wouldn\'t get taken by take" do
+    assert_enum([],               :drop, 1, [])
+    assert_enum([1],              :drop, 0, [1])
+    assert_enum([1],              :drop, 1, [])
+    assert_enum([1, 2],           :drop, 1, [2])
+    assert_enum(['a', 'b', 'c'],  :drop, 2, ['c'])
+  end
 end
 
 
