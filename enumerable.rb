@@ -43,6 +43,14 @@ module MyEnumerable
     each { |el| block.call el, object }
     object
   end
+
+  def take(number)
+    each_with_object([]) do |el, taken|
+      number -= 1
+      break taken if number < 0
+      taken << el
+    end
+  end
 end
 
 RSpec.describe "My Enumerable" do
@@ -188,9 +196,14 @@ RSpec.describe "My Enumerable" do
     end
   end
 
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-take
-  # specify "#take returns first n items" do
-  # end
+  # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-take
+  specify "#take returns first n items" do
+    assert_enum([],               :take, 1, [])
+    assert_enum([1],              :take, 0, [])
+    assert_enum([1],              :take, 1, [1])
+    assert_enum([1, 2],           :take, 1, [1])
+    assert_enum(['a', 'b', 'c'],  :take, 2, ['a', 'b'])
+  end
 
   # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-drop
   # specify "#drop returns whatever items wouldn\'t get taken by take" do
