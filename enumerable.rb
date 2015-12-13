@@ -38,13 +38,18 @@ module MyEnumerable
   end
 
   def group_by(&block)
-    grouped = {}
-    each do |el|
-      key = block.call(el)
+    # grouped = {}
+    # each do |el|
+    #   key = block.call(el)
+    #   grouped[key] = [] unless grouped.key? key
+    #   grouped[key] << el
+    # end
+    # grouped
+    each_with_object Hash.new do |el, grouped|
+      key = block.call el
       grouped[key] = [] unless grouped.key? key
       grouped[key] << el
     end
-    grouped
   end
 
   def each_with_object(object, &block)
