@@ -186,6 +186,8 @@ RSpec.describe "My Enumerable" do
 
   # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-each_with_object
   # this one next because we may be able to refactor with it
+    # evens = (1..10).each_with_object([]) { |i, a| a << i*2 }
+    # => [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
   specify "#each_with_object hands the block each item of an object and it returns the object" do
     assert_enum([], :each_with_object, '', '') {}
     assert_enum(['a', 'b'], :each_with_object, '', 'ab') do |char, string|
