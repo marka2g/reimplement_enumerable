@@ -29,7 +29,9 @@ module MyEnumerable
     # mapped = []
     # each { |el| mapped << block.call(el) }
     # mapped
-    each_with_object([]) {|el, mapped| mapped << block.call(el)}
+    # each_with_object([]) {|el, mapped| mapped << block.call(el)}
+    # better syntax
+    each_with_object([]) {|el, mapped| mapped.push block.call el}
   end
 
   def inject(aggregate, symbol = nil, &block)
