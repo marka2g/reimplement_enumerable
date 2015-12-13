@@ -46,6 +46,11 @@ module MyEnumerable
     end
     grouped
   end
+
+  def each_with_object(object, &block)
+    each { |el| block.call el, object }
+    object
+  end
 end
 
 RSpec.describe "My Enumerable" do
@@ -89,10 +94,10 @@ RSpec.describe "My Enumerable" do
 
   # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-find
   specify "#find|#detect returns the first item where the block returns true" do
-    assert_enum([],                   :find,    nil)
+    assert_enum([],                   :find,    nil) { true }
     assert_enum([1, 2],               :find,      1) { true }
     assert_enum(['a', 'bcd', 'a'],    :find,  'bcd') { |str| str.length == 3 }
-    assert_enum([1, 2],               :find,      nil) { false }
+    assert_enum([1, 2],               :find,    nil) { false }
   end
 
   # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-find_all
@@ -180,7 +185,13 @@ RSpec.describe "My Enumerable" do
   # end
 
   # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-each_with_object
+  # this one next because we may be able to refactor with it
   specify "#each_with_object hands the block each item of an object and it returns the object" do
+    assert_enum([], :each_with_object, '', '') {}
+    assert_enum(['a', 'b'], :each_with_object, '', 'ab') do |char, string|
+      string << char
+      nil
+    end
   end
 
   # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-take
