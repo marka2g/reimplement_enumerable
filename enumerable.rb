@@ -20,18 +20,17 @@ module MyEnumerable
   end
 
   def find_all(&block)
-    found = []
-    each { |el| found << el if block.call el }
-    found
+    # found = []
+    # each { |el| found << el if block.call el }
+    # found
+    each_with_object([]) {|el, found| found << el if block.call(el)}
   end
 
   def map(&block)
     # mapped = []
     # each { |el| mapped << block.call(el) }
     # mapped
-    # each_with_object([]) {|el, mapped| mapped << block.call(el)}
-    # better syntax
-    each_with_object([]) {|el, mapped| mapped.push block.call el}
+    each_with_object([]) {|el, mapped| mapped << block.call(el)}
   end
 
   def inject(aggregate, symbol = nil, &block)
