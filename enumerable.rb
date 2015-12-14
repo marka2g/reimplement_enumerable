@@ -152,46 +152,6 @@ RSpec.describe "My Enumerable" do
     assert_enum(['abc', 'lo', 'lol', 'lkjs'], :group_by, {3 => ['abc', 'lol'], 2 => ['lo'], 4 => ['lkjs']}) {|el| el.length}
   end
 
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-first
-  # specify "#first returns the first item in the collection" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-all-3F
-  # specify "#all? returns true if the block returns true for each item in the array" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-any-3F
-  # specify "#any? returns true if the block returns true for any item in the array" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-none-3F
-  # specify "#none? returns false if the block returns true for each item in the array" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-min
-  # specify "#min returns the smallest item in the collection" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-max
-  # specify "#max returns the largest item in the collection" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-min_by
-  # specify "#min_by returns the smallest element, compared by the return values from block" do
-  # end
-
-  # # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-max_by
-  # specify "#max_by returns the largest element, compared by the return values from block" do
-  # end
-
-  # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-include-3F
-  # specify "#include? returns true if the item is in the collection" do
-  # end
-
-  # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-each_with_index
-  # specify "#each_with_index hands the block each item from the collection, and also the index starting at zero" do
-  # end
-
   # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-each_with_object
   # this one next because we may be able to refactor with it
     # evens = (1..10).each_with_object([]) { |i, a| a << i*2 }
@@ -226,11 +186,52 @@ end
 
 
 __END__
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-first
+# specify "#first returns the first item in the collection" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-all-3F
+# specify "#all? returns true if the block returns true for each item in the array" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-any-3F
+# specify "#any? returns true if the block returns true for any item in the array" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-none-3F
+# specify "#none? returns false if the block returns true for each item in the array" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-min
+# specify "#min returns the smallest item in the collection" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-max
+# specify "#max returns the largest item in the collection" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-min_by
+# specify "#min_by returns the smallest element, compared by the return values from block" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-max_by
+# specify "#max_by returns the largest element, compared by the return values from block" do
+# end
+
+# http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-include-3F
+# specify "#include? returns true if the item is in the collection" do
+# end
+
+# # http://Marks-MacBook-Pro.local:62485/Dash/eowyzggm/Enumerable.html#method-i-each_with_index
+# specify "#each_with_index hands the block each item from the collection, and also the index starting at zero" do
+# end
+
+#=> :sort,
+#=> :sort_by,
+
 # maybes
 #=> :to_h,
 #=> :zip",
-#=> :sort,
-#=> :sort_by,
 #=> :grep,
 #=> :entries,
 #=> :flat_map,
